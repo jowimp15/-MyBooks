@@ -1,0 +1,183 @@
+@import "../utilities";
+
+.aside-info {
+  @include aside-allWidth(0);
+  transform: scale(1);
+  transition: transform ease 0.3s;
+}
+.quit-info-book {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.9);
+  }
+  .quit-info-book-btn {
+    color: $--color-border-principal;
+    font-size: $--step-3;
+  }
+}
+.about-book-info {
+  padding: 1rem;
+}
+.title-book-info {
+  width: 80%;
+  padding-left: 1rem;
+}
+.container-img-info-book {
+  overflow: auto;
+  height: 40%;
+
+  border-bottom: 5px solid $--color-secundary-light;
+}
+.img-book-info {
+  float: left;
+
+  width: 10rem;
+  display: block;
+  margin: 1rem;
+}
+.info-container-book {
+  position: relative;
+  padding: 1rem;
+  clear: both;
+
+  & p {
+    margin: 0.5rem 0;
+  }
+}
+.title-otherBooks-info {
+  margin-bottom: 0;
+}
+.span-info {
+  font-size: $--step-1;
+  font-weight: 900;
+  color: $--color-secundary;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.save-btn-info {
+  @include btn-style-books();
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.other-book-info {
+  margin: 0;
+  padding: 1rem;
+}
+.saves-icon-BookInfo {
+  position: absolute;
+  top: 4rem;
+  right: 1rem;
+}
+////////////////////////////////////////// query: landcape
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .aside-info {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+    grid-template-areas:
+      "title info"
+      "img info"
+      "img info";
+  }
+  .img-book-info {
+    grid-area: img;
+  }
+  .title-book-info {
+    grid-area: title;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    border-right: 5px solid $--color-secundary-light;
+  }
+  .info-container-book {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    .span-info {
+      color: white;
+    }
+  }
+  .container-img-info-book {
+    height: 100%;
+    border: none;
+    border-right: 5px solid $--color-secundary-light;
+  }
+  .quit-info-book {
+    top: 4.5rem;
+
+    z-index: 900;
+  }
+  .save-btn-info {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+  .saves-icon-BookInfo {
+    right: 5rem;
+  }
+}
+
+////////////////////////////////////////// CALLS
+
+.aside-info-ative {
+  @include aside-allWidth(0);
+  transform: scale(0);
+  transition: transform ease 0.3s;
+}
+
+////////////////////////////////////////// Media query: tablets
+@media only screen and (min-width: 768px) and (min-height: 500px) {
+  .aside-info {
+    font-size: $--step-1;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10% 30% 60%;
+    grid-template-areas:
+      "title title"
+      "info info"
+      "img img";
+
+      background-color: #140236e1;
+  }
+
+  .title-book-info {
+    grid-area: title;
+    text-align: center;
+  }
+  .info-container-book {
+    grid-area: info;
+    height: 100%;
+  }
+  .container-img-info-book {
+    width: 100%;
+    grid-area: img;
+    display: flex;
+    align-items: start;
+    overflow: hidden;
+
+    .about-book-info {
+      padding-top: 4rem;
+    }
+  }
+  .img-book-info {
+    float: none;
+    width: 20rem;
+    height: 100%;
+    object-fit: contain;
+  }
+  .container-img-info-book {
+    height: 100%;
+    border: none;
+  }
+}

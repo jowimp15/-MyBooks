@@ -1,0 +1,46 @@
+@import "../utilities";
+
+@keyframes left-text {
+  to {
+    transform: translate(20%);
+    opacity: 0;
+  }
+  from {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+@keyframes right-text {
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+  from {
+    transform: translate(20%);
+    opacity: 0;
+  }
+}
+  .info-book-text-dekstop {
+    position: absolute;
+    right: 5rem;
+    top: 0;
+
+    width: 55rem;
+    height: 40rem;
+  }
+
+.info-book-text-dekstop {
+  font-size: $--step-1;
+  .span-info {
+    color: white;
+  }
+}
+
+/////////////////////////////////////////////////////// calls
+
+.right-text {
+  animation: right-text ease 0.5s forwards;
+}
+.left-text {
+  animation: left-text ease 0.5s forwards;
+}

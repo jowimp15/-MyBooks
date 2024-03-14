@@ -1,0 +1,80 @@
+@import "../utilities";
+
+@mixin container-litleBook() {
+  position: relative;
+
+  width: 10rem;
+  height: 17rem;
+  margin: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  padding: 0.5rem;
+  border: 2px solid $--color-border-principal;
+}
+.container-litleBook {
+  @include container-litleBook();
+  animation: fade-in ease 0.5s forwards;
+}
+.title-litleBook {
+  margin: 0;
+  text-align: center;
+}
+.img-litleBook {
+  width: 90%;
+}
+.saves-icon-litleBook {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+}
+.btn-delete-litleBook {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background-color: $--background-color-primary;
+  border-radius: 50%;
+
+  font-size: $--step-3;
+}
+/////////////////////////////// CALLS COMPONENT
+
+.container-litleBook-saved {
+  @include container-litleBook();
+  transform: scale(0.9);
+  filter: contrast(50%);
+}
+.none {
+  display: none;
+}
+
+/////////////////////////////// query: tablets
+
+@media only screen and (min-width: 768px) and (min-height: 500px) {
+  .container-litleBook {
+    width: 15rem;
+    height: 25rem;
+  }
+  .container-litleBook-saved {
+    @include container-litleBook();
+    transform: scale(0.9);
+    filter: contrast(50%);
+
+    width: 15rem;
+    height: 25rem;
+  }
+}
+
+/////////////////////////////// query: desktop
+
+@media only screen and (min-width: 1200px) {
+  .container-litleBook-saved {
+    @include container-litleBook();
+    transform: scale(1);
+
+    width: 15rem;
+    height: 25rem;
+  }
+}

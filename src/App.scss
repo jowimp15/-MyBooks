@@ -1,0 +1,43 @@
+// imports
+@import "./utilities";
+html {
+  background: #d96d00;
+  -webkit-text-size-adjust: 100%;
+  background: linear-gradient(
+    0deg,
+    #d96d00 0%,
+    #140236 20%,
+    #140236 50%,
+    #140236 80%,
+    #d96d00 100%
+  );
+}
+body {
+  color: white;
+
+  font-family: "Comfortaa", sans-serif;
+  font-family: "Comfortaa", sans-serif;
+}
+.principal-title {
+  font-size: $--step-7;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Rubik Doodle Shadow", system-ui;
+}
+h4,
+h5,
+h6 {
+  color: $--color-border-principal;
+}
+
+////////////////////////////  query: desktop
+
+@media only screen and (min-width: 1800px) {
+  body {
+    overflow-x: hidden;
+  }
+}

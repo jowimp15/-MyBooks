@@ -1,0 +1,132 @@
+$--step--3: clamp(0.5788rem, 0.5574rem + 0.1065vw, 0.64rem);
+$--step--2: clamp(0.6944rem, 0.6576rem + 0.1837vw, 0.8rem);
+$--step--1: clamp(0.8331rem, 0.7751rem + 0.2902vw, 1rem);
+$--step-0: clamp(1rem, 0.913rem + 0.4348vw, 1.25rem);
+$--step-1: clamp(1.2rem, 1.0739rem + 0.6304vw, 1.5625rem);
+$--step-2: clamp(1.44rem, 1.2615rem + 0.8924vw, 1.9531rem);
+$--step-3: clamp(1.7281rem, 1.4801rem + 1.2402vw, 2.4413rem);
+$--step-4: clamp(2.0738rem, 1.7335rem + 1.7011vw, 3.0519rem);
+$--step-5: clamp(2.4881rem, 2.0266rem + 2.3076vw, 3.815rem);
+$--step-6: clamp(2.9863rem, 2.3665rem + 3.0989vw, 4.7681rem);
+$--step-7: clamp(3.5831rem, 2.7562rem + 4.1348vw, 5.9606rem);
+$--step-8: clamp(4.3rem, 3.2041rem + 5.4793vw, 7.4506rem);
+$--step-9: clamp(5.16rem, 3.7154rem + 7.2228vw, 9.3131rem);
+$--step-10: clamp(6.1919rem, 4.2964rem + 9.4772vw, 11.6413rem);
+$--color-border-principal: #e6e6e6bd;
+$--color-secundary: #d96d00;
+$--background-color-primary: #140236;
+$--color-secundary-light: #f77e05;
+
+@mixin btn-style-books() {
+  margin: 0.2rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  color: $--color-border-principal;
+  border: 3px solid $--color-border-principal;
+  cursor: pointer;
+  border-radius: 10px;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+@mixin aside-allWidth($left) {
+  position: fixed;
+  top: 0;
+  left: $left;
+  z-index: 1000;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: $--background-color-primary;
+  // background: linear-gradient(
+  //   0deg,
+  //   #140236 0%,
+  //   #140236 30%,
+  //   #d96d00 50%,
+  //   #140236 70%,
+  //   #140236 100%
+  // );
+  transition: left ease 1s;
+}
+
+@mixin btn-save($prop, $value) {
+  position: absolute;
+  bottom: 1rem;
+  #{$prop}: $value;
+
+  background-color: $--color-border-principal;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+
+  &:active {
+    border: 3px solid $--color-secundary-light;
+    color: $--color-secundary-light;
+    transform: scale(0.9);
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+// icons
+
+.saves-icon {
+  font-size: 400%;
+  color: #00ff00;
+}
+.save-books {
+  @include btn-style-books();
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+
+  background-color: green;
+  color: black;
+  font-weight: 900;
+}
+.btn-remove-saved {
+  background-color: #810000;
+  color: $--color-border-principal;
+}
+
+/////////////////////////// Query landscape
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .save-books {
+    left: auto;
+    right: 0;
+    bottom: 24%;
+  }
+}
+
+/////////////////////////// Query tablet
+@media only screen and (min-width: 768px) and (min-height: 500px) {
+  .save-books {
+    bottom: 0;
+  }
+}
+
+/////////////////////////// Query desktop
+@media screen and (min-width: 1200px) {
+  .save-books {
+    left: auto;
+    right: 0;
+    bottom: 10%;
+  }
+}

@@ -1,0 +1,296 @@
+@import "../utilities";
+
+.books {
+  position: relative;
+
+  width: 100vw;
+  height: 55rem;
+  padding: 1rem;
+  flex-shrink: 0;
+  border: 5px solid $--color-border-principal;
+
+  scroll-snap-align: center;
+
+  background-color: #f0f8ff21;
+}
+.title-book {
+  text-align: center;
+}
+
+.img-books {
+  display: block;
+  width: 100%;
+  height: 30rem;
+  margin: auto;
+  object-fit: contain;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+.data-book {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.year,
+.page {
+  align-self: end;
+  margin: 0;
+}
+.aunthor-date-genre {
+  p {
+    margin: 0.1rem;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+//////////////////////////// CALLS
+
+.books-fade-in {
+  animation: fade-in ease 1s forwards;
+}
+
+//////////////////////////// querys: landscape
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .books {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 20% 50% 30%;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "title title "
+      "img description"
+      "img data";
+
+    padding: 0;
+  }
+  .title-book {
+    grid-area: title;
+    border-bottom: 5px solid $--color-border-principal;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container-img {
+    height: 100%;
+    border-right: 5px solid $--color-border-principal;
+    grid-area: img;
+  }
+  .img-books {
+    padding: 1rem;
+    height: 100%;
+  }
+  .footer-book {
+    grid-area: description;
+    padding: 1rem;
+    overflow: auto;
+  }
+  .data-book {
+    grid-area: data;
+    border-top: 5px solid $--color-border-principal;
+    padding: 0.5rem;
+  }
+
+  .page,
+  .year {
+    align-self: auto;
+  }
+}
+//////////////////////////// querys: tablets
+
+@media only screen and (min-width: 768px) and (min-height: 500px) {
+  .books {
+    font-size: 20px;
+    height: 40rem;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 15% 50% 35%;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "title title "
+      "img description"
+      "img data";
+
+    padding: 0;
+    border: none;
+    background-color: inherit;
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .title-book {
+    grid-area: title;
+  }
+  .container-img {
+    grid-area: img;
+  }
+  .footer-book {
+    grid-area: description;
+    overflow: auto;
+  }
+  .data-book {
+    grid-area: data;
+    padding: 1rem 0;
+  }
+  .page,
+  .year {
+    align-self: auto;
+  }
+}
+
+//////////////////////////////////////// CALLS Query: tablets
+
+.books-observe {
+  opacity: 1;
+
+  transition: opacity 0.5s ease;
+}
+
+@media screen and (min-width: 1200px) {
+  .books {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: inherit;
+
+    grid-area: all;
+    width: 33%;
+    transform: scale(1);
+  }
+  .elDiv {
+    position: absolute;
+  }
+}
+
+//////////////////////////////////////// CALLS Query: dekstop
+
+@keyframes right {
+  0% {
+    transform: translateX(0%) scale(0.8) rotateY(-0.25turn);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(-100%) scale(0.8) rotateY(-0.15turn);
+    opacity: 0.5;
+  }
+}
+@keyframes center {
+  from {
+    transform: translateX(-100%) scale(0.8) rotateY(-0.15turn);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateX(-200%) scale(1) rotateY(0) translateY(-2rem);
+    opacity: 1;
+  }
+}
+@keyframes left {
+  from {
+    transform: translateX(-200%) scale(1) rotateY(0) translateY(-2rem);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-300%) scale(0.8) rotateY(0.15turn);
+    opacity: 0.5;
+  }
+}
+@keyframes last {
+  from {
+    transform: translateX(-300%) scale(0.8) rotateY(0.15turn);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateX(-400%) scale(0.8) rotateY(0.25turn);
+    opacity: 0;
+  }
+}
+
+/////// reverse
+
+@keyframes right-reverse {
+  0% {
+    transform: translateX(-100%) scale(0.8) rotateY(-0.15turn);
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0%) scale(0.8) rotateY(-0.25turn);
+    opacity: 0;
+  }
+}
+
+@keyframes center-reverse {
+  from {
+    transform: translateX(-200%) scale(1) rotateY(0) translateY(-2rem);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%) scale(0.8) rotateY(-0.15turn);
+    opacity: 0.5;
+  }
+}
+
+@keyframes left-reverse {
+  from {
+    transform: translateX(-300%) scale(0.8) rotateY(0.15turn);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateX(-200%) scale(1) rotateY(0) translateY(-2rem);
+    opacity: 1;
+  }
+}
+
+@keyframes last-reverse {
+  from {
+    transform: translateX(-400%) scale(0.8) rotateY(0.25turn);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(-300%) scale(0.8) rotateY(0.15turn);
+    opacity: 0.5;
+  }
+}
+
+.right-book {
+  animation: right ease 0.5s forwards;
+}
+.center-book {
+  animation: center ease 0.5s forwards;
+}
+.left-book {
+  animation: left ease 0.5s forwards;
+}
+.last-book {
+  animation: last ease 0.5s forwards;
+}
+// reverse
+.right-book-reverse {
+  animation: right-reverse ease 0.5s forwards;
+}
+.center-book-reverse {
+  animation: center-reverse ease 0.5s forwards;
+}
+.left-book-reverse {
+  animation: left-reverse ease 0.5s forwards;
+}
+.last-book-reverse {
+  animation: last-reverse ease 0.5s forwards;
+}

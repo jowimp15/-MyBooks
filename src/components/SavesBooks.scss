@@ -1,0 +1,121 @@
+@import "../utilities";
+
+.Saves-books {
+  @include aside-allWidth(300%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.saves-title,
+.quantity-books-saved {
+  margin-left: 1rem;
+}
+.btn-remove-book-saves {
+  position: absolute;
+  top: 5rem;
+  right: 1rem;
+
+  @include btn-style-books();
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.circle-select-saved {
+  width: 0.5rem;
+  height: 0.5rem;
+
+  border-radius: 50%;
+  outline: 3px solid $--color-border-principal;
+  outline-offset: 2px;
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+.container-saved-books {
+  height: 80%;
+  overflow: auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 10rem));
+  justify-content: center;
+
+  border-top: 5px solid $--color-secundary-light;
+  border-bottom: 5px solid $--color-secundary-light;
+  margin: 1rem;
+}
+.not-saves-text {
+  margin: 2rem;
+  width: 10rem;
+
+  line-height: 2rem;
+  letter-spacing: 0.5rem;
+  font-weight: 9000;
+  font-size: $--step-2;
+  color: $--color-border-principal;
+}
+.btn-quit-saves {
+  @include btn-save("left", 0);
+
+}
+
+.fa-heart {
+  color: black;
+  font-size: 5rem;
+}
+
+////////////////////////////  query: lanscape
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .Saves-books {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-areas:
+      "title container"
+      "count container"
+      "btn container";
+    align-items: center;
+  }
+  .saves-title {
+    grid-area: title;
+  }
+  .quantity-books-saved {
+    grid-area: count;
+  }
+  .btn-remove-book-saves {
+    grid-area: btn;
+    position: relative;
+    top: -3rem;
+    right: 0;
+  }
+  .container-saved-books {
+    grid-area: container;
+    height: 100vh;
+  }
+}
+////////////////////////////  query: tabletss
+/// @media only screen and (min-width: 768px) and (min-height: 500px) {
+@media only screen and (min-width: 768px) and (min-height: 500px) {
+  .container-saved-books {
+    grid-template-columns: repeat(auto-fill, minmax(min-content, 15rem));
+
+    margin: 0;
+  }
+  .btn-quit-saves {
+    @include btn-save("left", 0);
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+//////////////////////////// CALLS
+
+.circle-select-saved-active {
+  @extend .circle-select-saved;
+
+  background-color: $--color-border-principal;
+}
+
+.savesBooks-active {
+  @include aside-allWidth(0);
+}
